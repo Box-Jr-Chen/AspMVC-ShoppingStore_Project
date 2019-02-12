@@ -9,5 +9,6 @@ namespace ShoppingStore.Areas.Admin.Models.Data
     public class Dbase :DbContext
     {
         public DbSet<PageDTO> Pages { get; set; }
+        public DbSet<SidebarDTO> Sidebar { get; set; }
     }
 }

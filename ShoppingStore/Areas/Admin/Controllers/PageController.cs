@@ -245,5 +245,47 @@ namespace ShoppingStore.Areas.Admin.Controllers
                 }
             }
         }
+
+        //GET: Admin/Pages/EditSidebar
+        [HttpGet]
+        public ActionResult EditSidebar()
+        {
+            //Declare model
+            SidebarVM model;
+
+            using (Dbase db =new Dbase())
+            {
+                //Get the DTO
+                SidebarDTO dto = db.Sidebar.Find(1);
+
+                //Init model
+                model = new SidebarVM(dto);
+            }
+            //Return view with model
+            return View(model);
+        }
+
+        //POST: Admin/Pages/EditSidebar
+        [HttpPost]
+        public ActionResult EditSidebar(SidebarVM model)
+        {
+            using (Dbase db = new Dbase())
+            {
+                //Get the DTO
+                SidebarDTO dto = db.Sidebar.Find(1);
+
+                //DTO the body
+                dto.Body = model.Body;
+
+                //Save
+                db.SaveChanges();
+            }
+
+            //Set TempData message
+            TempData["SM"] = "You have edited the sidebar!";
+
+            //Redirect
+            return RedirectToAction("EditSidebar");
+        }
     }
 }
