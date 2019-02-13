@@ -56,35 +56,35 @@ else
     </table>
 }
 
-@section Scripts{
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-    <script>
+        @section Scripts{
+            <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+            <script>
 
-        $(function () {
+                $(function () {
 
-            /*
-             * Confirm page deletion 
-             */
-            $("a.delete").click(function () {
-                if (!confirm("Confirm page deletion")) return false;
-            });
-            ////////////////////////////////////////
-
-            /*
-             * Confirm page deletion 
-             */
-            $("table#pages tbody").sortable({
-                items: "tr:not(.home)",
-                placeholder: "ui-state-highlight",
-                update: function () {
-                    var ids = $("table#pages tbody").sortable("serialize");
-                    var url = "/Admin/Page/RecorderPages";
-
-                    $.post(url, ids, function (data) {
+                    /*
+                     * Confirm page deletion 
+                     */
+                    $("a.delete").click(function () {
+                        if (!confirm("Confirm page deletion")) return false;
                     });
-                }
-            });
-            ////////////////////////////////////////
-        });
-    </script>
-}
+                    ////////////////////////////////////////
+
+                    /*
+                     * Confirm page deletion 
+                     */
+                    $("table#pages tbody").sortable({
+                        items: "tr:not(.home)",
+                        placeholder: "ui-state-highlight",
+                        update: function () {
+                            var ids = $("table#pages tbody").sortable("serialize");
+                            var url = "/Admin/Page/RecorderPages";
+
+                            $.post(url, ids, function (data) {
+                            });
+                        }
+                    });
+                    ////////////////////////////////////////
+                });
+            </script>
+        }
