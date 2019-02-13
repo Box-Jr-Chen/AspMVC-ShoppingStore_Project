@@ -224,7 +224,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
 
         //POST: Admin/Pages/RecorderPages
         [HttpPost]
-        public void RecorderPages(int[] id)
+        public void ReorderPages(int[] id)
         {
             using (Dbase db=new Dbase())
             {

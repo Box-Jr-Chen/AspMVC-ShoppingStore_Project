@@ -61,5 +61,73 @@ namespace ShoppingStore.Areas.Admin.Controllers
             //Return id
             return id;
         }
+
+        //POST: Admin/shop/ReorderCategories
+        [HttpPost]
+        public void ReorderCategories(int[] id)
+        {
+            using (Dbase db = new Dbase())
+            {
+                //Set initial count
+                int count = 1;
+
+                // Declare CategoryDTO
+                CategoryDTO dto;
+
+                //Set sorting for each category
+                foreach (var catId in id)
+                {
+                    dto = db.Categories.Find(catId);
+                    dto.Sorting = count;
+
+                    db.SaveChanges();
+                    count++;
+                }
+            }
+        }
+
+        //GET: Admin/shop/DeleteCategory/id
+        public ActionResult DeleteCategory(int id)
+        {
+            using (Dbase db = new Dbase())
+            {
+                //Get the category
+                CategoryDTO dto = db.Categories.Find(id);
+
+                //Remove the Category
+                db.Categories.Remove(dto);
+                //Save
+                db.SaveChanges();
+            }
+
+            //Redirect
+            return RedirectToAction("Categories");
+        }
+
+        //POST:Admin/Shop/RenameCategory
+        [HttpPost]
+        public string RenameCategory(string newCatName,int id)
+        {
+            
+            using (Dbase db =new Dbase())
+            {
+                //Check category name is unique
+                if (db.Categories.Any(x => x.Name ==newCatName))
+                {
+                    return "titletaken";
+                }
+
+                //Get  DTO
+                CategoryDTO dto = db.Categories.Find(id);
+
+                //Edit DTO
+                dto.Name = newCatName;
+                dto.Slug = newCatName.Replace(" ", "-").ToLower();
+                //Save
+                db.SaveChanges();
+            }
+            //Return
+            return "ok";
+        }
     }
 }
