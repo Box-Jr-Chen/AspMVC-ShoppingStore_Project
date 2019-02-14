@@ -6,6 +6,13 @@
 
 <h2>Add Product</h2>
 
+@if (TempData["SM"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SM"]
+    </div>
+}
+
 @using (Html.BeginForm("AddProduct", "Shop", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -48,7 +55,7 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="HasSidebar">Product Image</label>
             <div class="col-md-10">
-                <input type="file" ,name="file" id="ImageUpload" />
+                <input type="file" name="file" id="ImageUpload" />
                 <img id="imgpreview" src="#" />
 
             </div>
@@ -67,25 +74,35 @@
     @Html.ActionLink("Back to Products", "Products")
 </div>
 
-@section Scripts{
+@section Scripts
+{
     <script>
+        $(function () {
 
-$(function () {
+            /*
+            * Preview selected image
+            */
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
-                    /*
-                     * Preview selected image
-                     */
+                    reader.onload = function (e) {
+                        $("img#imgpreview")
+                            .attr("src", e.target.result)
+                            .width(200)
+                            .height(200);
+                    }
 
-    function readURL(input)
-        {
-            if (input.files && input.files[0])
-            {
-                var reader = new FileReader();
+                    reader.readAsDataURL(input.files[0]);
+                }
             }
-        }
 
-                    ////////////////////////////////////////
+            $("#ImageUpload").change(function () {
+                readURL(this);
+            });
 
-});
+            ////////////////////////////////////////
+
+        });
     </script>
 }
