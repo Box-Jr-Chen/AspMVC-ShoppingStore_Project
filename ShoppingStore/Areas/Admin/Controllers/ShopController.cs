@@ -129,5 +129,21 @@ namespace ShoppingStore.Areas.Admin.Controllers
             //Return
             return "ok";
         }
+
+        //GET: Admin/shop/AddProduct
+        public ActionResult AddProduct()
+        {
+            //Init model
+            ProductVM model = new ProductVM();
+
+            //Add select list of categories 
+            using (Dbase db = new Dbase())
+            {
+                model.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
+            }
+
+            //Return view with model
+            return View(model);
+        }
     }
 }
