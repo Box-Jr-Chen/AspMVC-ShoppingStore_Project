@@ -270,3 +270,7 @@ D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\ob
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.csproj.CopyComplete
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.pdb
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.dll
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.Mvc.dll
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.xml
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.Mvc.xml
