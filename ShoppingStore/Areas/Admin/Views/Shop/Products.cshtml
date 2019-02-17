@@ -24,9 +24,11 @@
     }
 </select>
 <br /><br />
+
 <p>
     @Html.ActionLink("Add New Product", "AddProduct")
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -63,7 +65,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditProduct", new { id = product.Id }) |
-                @Html.ActionLink("Delete", "DeleteProduct", new { id = product.Id })
+                @Html.ActionLink("Delete", "DeleteProduct", new { id = product.Id }, new {@class="delete" })
             </td>
         </tr>
     }
@@ -85,17 +87,17 @@ $(function () {
         var url = $(this).val();
 
         if (url) {
-            window.location = "/admin/shop/Products?catId=" + url;
+            window.location = "/Admin/Shop/Products?catId=" + url;
         }
 
         return false;
     });
     ////////////////////////////////////////
     /*
-    * Confirm page deletion
+    * Confirm product deletion
     */
     $("a.delete").click(function () {
-        if (!confirm("Confirm page deletion")) return false;
+        if (!confirm("Confirm product deletion")) return false;
     });
     ////////////////////////////////////////
 

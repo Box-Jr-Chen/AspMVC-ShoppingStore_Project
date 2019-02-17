@@ -20,7 +20,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
             //Declare a list of models
             List<CategoryVM> categoryVMList;
 
-            using (Dbase db =new Dbase())
+            using (Dbase db = new Dbase())
             {
                 //Init the list
                 categoryVMList = db.Categories
@@ -61,7 +61,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
 
                 //Get the id
                 id = dto.Id.ToString();
-             }
+            }
 
             //Return id
             return id;
@@ -111,13 +111,13 @@ namespace ShoppingStore.Areas.Admin.Controllers
 
         //POST:Admin/Shop/RenameCategory
         [HttpPost]
-        public string RenameCategory(string newCatName,int id)
+        public string RenameCategory(string newCatName, int id)
         {
-            
-            using (Dbase db =new Dbase())
+
+            using (Dbase db = new Dbase())
             {
                 //Check category name is unique
-                if (db.Categories.Any(x => x.Name ==newCatName))
+                if (db.Categories.Any(x => x.Name == newCatName))
                 {
                     return "titletaken";
                 }
@@ -157,11 +157,11 @@ namespace ShoppingStore.Areas.Admin.Controllers
         public ActionResult AddProduct(ProductVM model, HttpPostedFileBase file)
         {
             //Check model state
-            if (! ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 using (Dbase db = new Dbase())
                 {
-                    model.Categories = new SelectList(db.Categories.ToList(),"Id","Name");
+                    model.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
                     return View(model);
                 }
             }
@@ -172,7 +172,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
                 if (db.Products.Any(x => x.Name == model.Name))
                 {
                     model.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
-                    ModelState.AddModelError("","That product name is taken!");
+                    ModelState.AddModelError("", "That product name is taken!");
                     return View(model);
                 }
             }
@@ -184,10 +184,10 @@ namespace ShoppingStore.Areas.Admin.Controllers
             {
                 ProductDTO product = new ProductDTO();
 
-                product.Name        = model.Name;
-                product.Slug        = model.Name.Replace(" ", "-").ToLower();
+                product.Name = model.Name;
+                product.Slug = model.Name.Replace(" ", "-").ToLower();
                 product.Description = model.Description;
-                product.Price       = model.Price;
+                product.Price = model.Price;
                 product.CategoryId = model.CategoryId;
 
                 CategoryDTO catDTO = db.Categories.FirstOrDefault(x => x.Id == model.CategoryId);
@@ -206,12 +206,12 @@ namespace ShoppingStore.Areas.Admin.Controllers
             #region Upload Image
 
             //Create necessary directories
-            var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\Uploads",Server.MapPath(@"\")));
+            var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\Uploads", Server.MapPath(@"\")));
 
 
             //Check if a file was uploaded
-            var pathString1 = Path.Combine(originalDirectory.ToString(),"Products");
-            var pathString2 = Path.Combine(originalDirectory.ToString(), "Products\\" + id.ToString() );
+            var pathString1 = Path.Combine(originalDirectory.ToString(), "Products");
+            var pathString2 = Path.Combine(originalDirectory.ToString(), "Products\\" + id.ToString());
             var pathString3 = Path.Combine(originalDirectory.ToString(), "Products\\" + id.ToString() + "\\Thumbs");
             var pathString4 = Path.Combine(originalDirectory.ToString(), "Products\\" + id.ToString() + "\\Gallery");
             var pathString5 = Path.Combine(originalDirectory.ToString(), "Products\\" + id.ToString() + "\\Gallery\\Thumbs");
@@ -243,7 +243,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
                     ext != "image/pjpeg" &&
                     ext != "image/gif" &&
                     ext != "image/x-png" &&
-                    ext != "image/png" )
+                    ext != "image/png")
                 {
                     using (Dbase db = new Dbase())
                     {
@@ -266,7 +266,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
                 }
 
                 //Set original and thumb image paths
-                var path  = string.Format("{0}\\{1}",pathString2,imageName);
+                var path = string.Format("{0}\\{1}", pathString2, imageName);
                 var path2 = string.Format("{0}\\{1}", pathString3, imageName);
 
                 //Save original
@@ -285,7 +285,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
         }
 
         //GET: Admin/Shop/Products
-        public ActionResult Products(int? page,int? catId)
+        public ActionResult Products(int? page, int? catId)
         {
             //Declare a list of ProductVM
             List<ProductVM> listofProductVM;
@@ -296,7 +296,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
             using (Dbase db = new Dbase())
             {
                 //Init the list
-                listofProductVM  = db.Products.ToArray()
+                listofProductVM = db.Products.ToArray()
                                   .Where(x => catId == null || catId == 0 || x.CategoryId == catId)
                                   .Select(x => new ProductVM(x))
                                   .ToList();
@@ -322,7 +322,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
             //Declare porductVM
             ProductVM model;
 
-            using (Dbase db =new Dbase())
+            using (Dbase db = new Dbase())
             {
                 //Get the product
                 ProductDTO dto = db.Products.Find(id);
@@ -336,18 +336,18 @@ namespace ShoppingStore.Areas.Admin.Controllers
                 model = new ProductVM(dto);
 
                 //Make a select list
-                model.Categories = new SelectList(db.Categories.ToList(),"Id","Name");
+                model.Categories = new SelectList(db.Categories.ToList(), "Id", "Name");
 
                 //Get all gallery images
-            }   model.GalleryImage = Directory.EnumerateFiles(Server.MapPath("~/Images/Uploads/Products/" + id + "/Gallery/Thumbs"))
-                                              .Select(fn => Path.GetFileName(fn));
+            } model.GalleryImage = Directory.EnumerateFiles(Server.MapPath("~/Images/Uploads/Products/" + id + "/Gallery/Thumbs"))
+                                            .Select(fn => Path.GetFileName(fn));
             //Return view with model
             return View(model);
         }
 
         //POST:Admin/Shop/EditProduct/id
         [HttpPost]
-        public ActionResult EditProduct(ProductVM model,HttpPostedFileBase file)
+        public ActionResult EditProduct(ProductVM model, HttpPostedFileBase file)
         {
             //Get product id
             int id = model.Id;
@@ -379,8 +379,8 @@ namespace ShoppingStore.Areas.Admin.Controllers
             {
                 ProductDTO dto = db.Products.Find(id);
 
-                dto.Name  = model.Name;
-                dto.Slug  = model.Name.Replace(" ", "-").ToLower();
+                dto.Name = model.Name;
+                dto.Slug = model.Name.Replace(" ", "-").ToLower();
                 dto.Description = model.Description;
                 dto.Price = model.Price;
                 dto.CategoryId = model.CategoryId;
@@ -398,7 +398,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
             #region Image Upload
 
             //Check for file Upload
-            if(file != null && file.ContentLength > 0){
+            if (file != null && file.ContentLength > 0) {
 
                 //Get exxtension
                 string ext = file.ContentType.ToLower();
@@ -464,6 +464,63 @@ namespace ShoppingStore.Areas.Admin.Controllers
 
             //Redirect
             return RedirectToAction("EditProduct");
+        }
+
+        //GET: Admin/Shop/DeleteProduct/id
+        public ActionResult DeleteProduct(int id)
+        {
+            //Delete product from DB
+            using (Dbase db = new Dbase())
+            {
+                ProductDTO dto = db.Products.Find(id);
+                db.Products.Remove(dto);
+
+                db.SaveChanges();
+            }
+
+            //Delete product folder
+            var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\Uploads", Server.MapPath(@"\")));
+            string pathString = Path.Combine(originalDirectory.ToString(), "Products\\" + id.ToString());
+
+            if (Directory.Exists(pathString))
+            {
+                Directory.Delete(pathString, true);
+            }
+
+            //Redirect
+            return RedirectToAction("Products");
+        }
+
+        //POST:Admin/Shop/SaveGalleryImages
+        [HttpPost]
+        public void SaveGalleryImages(int id)
+        {
+            //Loop through files
+            foreach(string fileName in Request.Files)
+            {
+                //Init the file
+                HttpPostedFileBase file = Request.Files[fileName];
+
+                //Check it's not null
+                if (file != null && file.ContentLength > 0)
+                {
+                    //Set directory paths
+                    var originalDirectory = new DirectoryInfo(string.Format("{0}Images\\Uploads",Server.MapPath(@"\")));
+
+                    string pathString1 = Path.Combine(originalDirectory.ToString(),"Products\\" + id.ToString() +"\\Gallery");
+                    string pathString2 = Path.Combine(originalDirectory.ToString(), "Products\\" + id.ToString() + "\\Gallery\\Thumbs");
+                    //Set image paths
+                    var path  = string.Format("{0}\\{1}",pathString1,file.FileName);
+                    var path2 = string.Format("{0}\\{1}", pathString2, file.FileName);
+
+                    //Save original and thumb
+
+                    file.SaveAs(path);
+                    WebImage img = new WebImage(file.InputStream);
+                    img.Resize(200, 200);
+                    img.Save(path2);
+                }
+            }
         }
     }
 }
