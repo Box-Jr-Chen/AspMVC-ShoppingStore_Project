@@ -235,6 +235,8 @@ D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bi
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\Microsoft.Web.Infrastructure.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\Newtonsoft.Json.dll
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.dll
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.Mvc.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\System.Diagnostics.DiagnosticSource.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\System.Web.Helpers.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\System.Web.Mvc.dll
@@ -246,6 +248,8 @@ D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bi
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\WebGrease.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\EntityFramework.xml
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\EntityFramework.SqlServer.xml
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.xml
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.Mvc.xml
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\System.Web.Helpers.xml
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\System.Web.Mvc.xml
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\System.Web.Optimization.xml
@@ -265,12 +269,8 @@ D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bi
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\zh-Hant\System.Web.WebPages.resources.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
-D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.csprojAssemblyReference.cache
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.csproj.CoreCompileInputs.cache
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.csproj.CopyComplete
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.pdb
-D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.dll
-D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.Mvc.dll
-D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.xml
-D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.Mvc.xml
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.csprojAssemblyReference.cache
