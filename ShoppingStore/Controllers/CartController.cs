@@ -1,4 +1,5 @@
-﻿using ShoppingStore.Areas.Admin.Models.ViewModels.Cart;
+﻿using ShoppingStore.Areas.Admin.Models.Data;
+using ShoppingStore.Areas.Admin.Models.ViewModels.Cart;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +60,8 @@ namespace ShoppingStore.Controllers
                     price += item.Quantity * item.Price;
                 }
 
+                model.Quantity = qty;
+                model.Price = price;
             }
             else
             {
@@ -69,6 +72,87 @@ namespace ShoppingStore.Controllers
 
             //Return partial view with model
             return PartialView(model);
+        }
+
+        public ActionResult AddToCartPartial(int id)
+        {
+            //Init CartVM list
+            List<CartVM> cart = Session["cart"] as List<CartVM> ?? new List<CartVM>();
+
+            //Init CartVM
+            CartVM model = new CartVM();
+
+            using (Dbase db = new Dbase())
+            {
+                //Get the product
+                ProductDTO product = db.Products.Find(id);
+
+                //Check uf product is already in cart
+                var productInCart = cart.FirstOrDefault(x =>x.ProductId ==id);
+
+                //if not,add now
+                if (productInCart == null)
+                {
+                    cart.Add(new CartVM()
+                    {
+                        ProductId = product.Id,
+                        ProductName = product.Name,
+                        Quantity = 1,
+                        Price = product.Price,
+                        Image = product.ImageName
+
+                    });
+                }
+                else
+                {
+                    //if it is,increment
+                    productInCart.Quantity++;
+                }
+            }
+            //Get total aty and price and add to model
+
+            int qty = 0;
+            decimal price = 0m;
+
+            foreach (var item in cart)
+            {
+                qty += item.Quantity;
+                price += item.Quantity * item.Price;
+            }
+
+            model.Quantity = qty;
+            model.Price    = price;
+
+            //Save cart back to session
+            Session["cart"] = cart;
+
+
+            //REturn partial view wirh model
+            return PartialView(model);
+        }
+
+        //Get :/Cart/IncrementProduct
+        public JsonResult IncrementProduct(int productId)
+        {
+            //Init cart init
+            List<CartVM> cart = Session["cart"] as List<CartVM>;
+
+            using (Dbase db = new Dbase())
+            {
+
+                //Get CartVM form list
+                CartVM model = cart.FirstOrDefault(x => x.ProductId == productId);
+
+
+                //Increment qty
+                model.Quantity++;
+
+                //Store needed data
+                var result = new { qty = model.Quantity,price = model.Price};
+
+                //Return json with data
+                return Json(result,JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }
