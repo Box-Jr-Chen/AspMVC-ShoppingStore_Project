@@ -182,13 +182,9 @@ else
                 var response = data.trim();
                 if (response == "titletaken") {
 
-                    console.log("===>" + response);
-
                     $this.val(originalTextBoxValue);
                     ajaxdiv.html("<span class='alert alert-danger'>That title is taken!</span>").show();
                 } else {
-                    console.log("22===>" + response);
-
                     ajaxdiv.html("<span class='alert alert-success'>That category name has been changed!</span>").show();
                 }
 

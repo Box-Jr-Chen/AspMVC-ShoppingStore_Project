@@ -97,20 +97,13 @@
     <h3>There are no gallery images for this product.</h3>
 }
 
-@*<form action ="/admin/shop/SaveGalleryImages" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
-        <div class="fallback">
-            <input type="file" name="file" multiple />
-            <input type="submit" value="Upload" />
-        </div>
-    </form>*@
-
-<form action ="/admin/shop/SaveGalleryImages"  method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneJsForm">
+@*method="post" enctype="multipart/form-data"*@
+<form action="/Admin/Shop/SaveGalleryImages?id=@Model.Id" class="dropzone" id="dropzoneForm">
     <div class="fallback">
         <input type="file" name="file" multiple />
         <input type="submit" value="Upload" />
-        <input type="hidden" name="Id" value="@Model.Id" />
     </div>
-    </form>
+</form>
 
 <br /><br />
 
@@ -126,9 +119,24 @@
 <link href="~/Scripts/dropzone/dropzone.css" rel="stylesheet" />
 
 @section Scripts{
-    <script src="~/Scripts/dropzone/dropzone.js"></script>
+    <script type="text/javascript">
+        Dropzone.options.dropzoneForm = {
+            acceptedFiles: "image/*",
+            init: function () {
+                this.on("complete", function (file) {
+                    if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                        location.reload();
+                    }
+                });
+            }
+        };
+
+        ////////////////////////////////////////
+
+    </script>
+
     <script>
- $(function () {
+     $(function () {
     /*
     * Preview selected image
     */
@@ -151,24 +159,6 @@
         readURL(this);
     });
 
-    ////////////////////////////////////////
-    /*
-    * Dropzone js
-    */
-     Dropzone.options.dropzoneForm = {
-         acceptedFiles: "image/*",
-         init: function () {
-             this.on("complete", function (file) {
-                 if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
-                     location.reload();
-                 }
-             });
-
-             this.on("sending", function (file, xhr, formData) {
-                 formData.append("id",@Model.Id);
-             });
-         }
-     };
     ////////////////////////////////////////
 
     /*

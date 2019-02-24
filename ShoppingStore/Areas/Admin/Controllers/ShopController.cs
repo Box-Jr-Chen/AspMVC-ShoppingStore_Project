@@ -492,11 +492,10 @@ namespace ShoppingStore.Areas.Admin.Controllers
         }
 
         //POST:Admin/Shop/SaveGalleryImages
-        [HttpPost]
         public void SaveGalleryImages(int id)
         {
             //Loop through files
-            foreach(string fileName in Request.Files)
+            foreach (string fileName in Request.Files)
             {
                 //Init the file
                 HttpPostedFileBase file = Request.Files[fileName];
@@ -514,6 +513,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
                     var path2 = string.Format("{0}\\{1}", pathString2, file.FileName);
 
                     //Save original and thumb
+
 
                     file.SaveAs(path);
                     WebImage img = new WebImage(file.InputStream);

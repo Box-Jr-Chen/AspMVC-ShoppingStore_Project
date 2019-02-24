@@ -65,12 +65,13 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditProduct", new { id = product.Id }) |
-                @Html.ActionLink("Delete", "DeleteProduct", new { id = product.Id }, new {@class="delete" })
+                @Html.ActionLink("Delete", "DeleteProduct", new { id = product.Id }, new { @class = "delete" })
             </td>
         </tr>
     }
 
 </table>
+
 
 @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Products", new { page, catId = ViewBag.SelectedCat }))
 
@@ -78,29 +79,29 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script>
 
-$(function () {
+        $(function () {
 
-    /*
-    * Select products from specified category
-    */
-    $("#SelectCategory").on("change", function () {
-        var url = $(this).val();
+            /*
+            * Select products from specified category
+            */
+            $("#SelectCategory").on("change", function () {
+                var url = $(this).val();
 
-        if (url) {
-            window.location = "/Admin/Shop/Products?catId=" + url;
-        }
+                if (url) {
+                    window.location = "/Admin/Shop/Products?catId=" + url;
+                }
 
-        return false;
-    });
-    ////////////////////////////////////////
-    /*
-    * Confirm product deletion
-    */
-    $("a.delete").click(function () {
-        if (!confirm("Confirm page deletion")) return false;
-    });
-    ////////////////////////////////////////
+                return false;
+            });
+            ////////////////////////////////////////
+            /*
+            * Confirm product deletion
+            */
+            $("a.delete").click(function () {
+                if (!confirm("Confirm page deletion")) return false;
+            });
+            ////////////////////////////////////////
 
-    });
-</script>
+        });
+    </script>
 }

@@ -274,3 +274,5 @@ D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\ob
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.pdb
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.csprojAssemblyReference.cache
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\CKFinder.dll
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\CKFinder.pdb
