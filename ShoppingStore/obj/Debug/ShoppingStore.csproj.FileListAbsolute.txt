@@ -229,6 +229,7 @@ D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bi
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\roslyn\VBCSCompiler.exe
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\roslyn\VBCSCompiler.exe.config
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\Antlr3.Runtime.dll
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\CKFinder.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\EntityFramework.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\EntityFramework.SqlServer.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\Microsoft.AspNet.TelemetryCorrelation.dll
@@ -246,6 +247,7 @@ D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bi
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\System.Web.WebPages.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\System.Web.WebPages.Razor.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\WebGrease.dll
+D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\CKFinder.pdb
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\EntityFramework.xml
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\EntityFramework.SqlServer.xml
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\PagedList.xml
@@ -274,5 +276,3 @@ D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\ob
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.dll
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.pdb
 D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\obj\Debug\ShoppingStore.csprojAssemblyReference.cache
-D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\CKFinder.dll
-D:\Project\Asp.net\ShoppingStore_Project\ShoppingStore_20190210\ShoppingStore\bin\CKFinder.pdb

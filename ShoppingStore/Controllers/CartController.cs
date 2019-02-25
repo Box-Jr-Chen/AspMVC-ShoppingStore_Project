@@ -154,5 +154,51 @@ namespace ShoppingStore.Controllers
                 return Json(result,JsonRequestBehavior.AllowGet);
             }
         }
+
+        //Get :/Cart/DecrementProduct
+        public ActionResult DecrementProduct(int productId)
+        {
+            //Init cart
+            List<CartVM> cart = Session["cart"] as List<CartVM>;
+
+            using (Dbase db = new Dbase())
+            {
+                //Get model drom list
+                CartVM model = cart.FirstOrDefault(x => x.ProductId == productId);
+
+                //Decrement qty
+                if (model.Quantity > 1)
+                {
+                    model.Quantity--;
+                }
+                else
+                {
+                    model.Quantity =0;
+                    cart.Remove(model);
+                }
+                //Store needed data
+                var result = new { qty = model.Quantity, price = model.Price };
+
+                //Return json
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+
+        }
+
+        //Get :/Cart/RemoveProduct
+        public void RemoveProduct(int productId)
+        {
+            //Init cart list
+            List<CartVM> cart = Session["cart"] as List<CartVM>;
+
+            using (Dbase db = new Dbase())
+            {
+                //Get model from list
+                CartVM model = cart.FirstOrDefault(x => x.ProductId == productId);
+
+                //Remove model form list
+                cart.Remove(model);
+            }
+        }
     }
 }

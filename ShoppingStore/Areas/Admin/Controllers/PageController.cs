@@ -178,7 +178,7 @@ namespace ShoppingStore.Areas.Admin.Controllers
             TempData["SM"] ="You have edited the page!";
 
             //Redirect
-            return RedirectToAction("EditPage");
+            return RedirectToAction("PageDetails/"+ model.Id);
         }
         //GET: Admin/Pages/PageDetails/id
         public ActionResult PageDetails(int id)

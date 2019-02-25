@@ -150,12 +150,18 @@
     <Compile Include="Areas\Admin\Models\Data\Dbase.cs" />
     <Compile Include="Areas\Admin\Models\Data\PageDTO.cs" />
     <Compile Include="Areas\Admin\Models\Data\ProductDTO.cs" />
+    <Compile Include="Areas\Admin\Models\Data\RoleDTO.cs" />
     <Compile Include="Areas\Admin\Models\Data\SidebarDTO.cs" />
+    <Compile Include="Areas\Admin\Models\Data\UserDTO.cs" />
+    <Compile Include="Areas\Admin\Models\Data\UserRoleDTO.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Account\LoginUserVM.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\Account\UserVM.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\Cart\CartVM.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\Pages\PageVM.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\Pages\SidebarVM.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\Shop\CategoryVM.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\Shop\ProductVM.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
@@ -1865,6 +1871,8 @@
     <Content Include="Views\Cart\CartPartial.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\AddToCartPartial.cshtml" />
+    <Content Include="Views\Account\CreateAccount.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="fileman\" />
