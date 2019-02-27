@@ -52,23 +52,25 @@
                     }
                 </ul>
 
-                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                @if (Request.IsAuthenticated)
                 {
-                    <ul class="navbar-collapse collapse navbar-right adminarea">
-                        <li>@Html.ActionLink("Admin Area","Index","Dashboard",new {area ="Admin" },null) </li>
-                    </ul>
-                }
-                else
-                {
-                    if (ViewBag.Title != "Cart Details")
+                    if (User.IsInRole("Admin"))
                     {
-                        <ul class="navbar-collapse collapse navbar-right">
-                            @Html.Action("CartPartial", "Cart")
+                        <ul class="navbar-collapse collapse navbar-right adminarea">
+                            <li>@Html.ActionLink("Admin Area", "Index", "Dashboard", new { area = "Admin" }, null) </li>
                         </ul>
                     }
+                    else
+                    {
+                        if (ViewBag.Title != "Cart Details")
+                        {
+                            <ul class="navbar-collapse collapse navbar-right">
+                                @Html.Action("CartPartial", "Cart")
+                            </ul>
+                        }
+                    }
                 }
-
-            </div>
+                </div>
         </div>
     </div>
     <div class="container body-content">
