@@ -34,7 +34,7 @@ namespace ShoppingStore
             using (Dbase db = new Dbase())
             {
                 //Populate roles
-                UserDTO dto = db.Users.FirstOrDefault(x => x.Username ==username);
+                UserDTO dto = db.Users.FirstOrDefault(x => x.Username == username);
 
                 roles = db.UserRoles.Where(x => x.UserId == dto.Id).Select(x => x.Role.Name).ToArray();
             }

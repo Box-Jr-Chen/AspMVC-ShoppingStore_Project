@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace ShoppingStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class PageController : Controller
     {
         // GET: Admin/Page

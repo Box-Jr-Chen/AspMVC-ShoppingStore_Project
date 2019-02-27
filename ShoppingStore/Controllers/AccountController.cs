@@ -1,5 +1,7 @@
 ﻿using ShoppingStore.Areas.Admin.Models.Data;
 using ShoppingStore.Areas.Admin.Models.ViewModels.Account;
+using ShoppingStore.Areas.Admin.Models.ViewModels.Shop;
+using ShoppingStore.Models.ViewModels.Account;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ using System.Web.Security;
 
 namespace ShoppingStore.Controllers
 {
+
     public class AccountController : Controller
     {
         // GET: Account
@@ -140,12 +143,14 @@ namespace ShoppingStore.Controllers
         }
 
         //GET: /account/Logout
+        [Authorize]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return Redirect("~/account/login");
         }
 
+        [Authorize]
         public ActionResult UserNavPartial()
         {
             //Get username
@@ -174,6 +179,7 @@ namespace ShoppingStore.Controllers
         //GET: /account/userProfile
         [HttpGet]
         [ActionName("user-profile")]
+        [Authorize]
         public ActionResult UserProfile()
         {
             //Get username
@@ -198,6 +204,7 @@ namespace ShoppingStore.Controllers
         //GET: /account/userProfile
         [HttpPost]
         [ActionName("user-profile")]
+        [Authorize]
         public ActionResult UserProfile(UserProfileVM model)
         {
             //Check model state
@@ -250,6 +257,68 @@ namespace ShoppingStore.Controllers
 
             //Redirect
             return Redirect("~/account/user-profile");
+        }
+
+        //GET: /account/Orders
+        [Authorize(Roles="User")]
+        public ActionResult Orders()
+        {
+            //Init list of OrdersForUserVM
+            List<OrderForUserVM> ordersForUser = new List<OrderForUserVM>();
+
+            using (Dbase db = new Dbase())
+            {
+                //Get user Id
+                UserDTO user = db.Users.Where(x => x.Username == User.Identity.Name).FirstOrDefault();
+                int userId = user.Id;
+
+                //Init list of OrderVM
+                List<OrderVM> orders = db.Orders.Where(x => x.UserId == userId).ToArray().Select(x => new OrderVM(x)).ToList();
+
+                //Loop through list of OrderVM
+                foreach (var order in orders)
+                {
+                    //Init products dict
+                    Dictionary<string, int> productsAndQty = new Dictionary<string, int>();
+
+                    //Declare total
+                    decimal total = 0m;
+
+                    //Init list of OrderDetailsDTO
+                    List<OrderDetailsDTO> orderDetailsDTO = db.OrderDetails.Where(x => x.OrderId ==order.OrderId).ToList();
+
+                    //Loop though list of OrderDetailsDTO
+                    foreach (var orderDetails in orderDetailsDTO)
+                    {
+                        //Get product
+                        ProductDTO product = db.Products.Where(x => x.Id == orderDetails.ProductId).FirstOrDefault();
+
+                        //Get product price
+                        decimal price = product.Price;
+
+                        //Get product name
+                        string productName = product.Name;
+
+                        //Add to products dict
+                        productsAndQty.Add(productName, orderDetails.Quantity);
+
+                        //Get total
+                        total += orderDetails.Quantity * price;
+                    }
+
+                    //Add to OrdersForUserVM list
+                    ordersForUser.Add(new OrderForUserVM()
+                    {
+                        OrderNumber     = order.OrderId,
+                        Total           = total,
+                        ProductsAndQty  = productsAndQty,
+                        CreatedAt       = order.CreatedAt 
+                    });
+                }
+            }
+
+                //Reutrn view with list of OrdersForUserVM
+                return View(ordersForUser);
         }
     }
 }
